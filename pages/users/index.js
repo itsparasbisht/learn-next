@@ -2,14 +2,13 @@ function UsersList({ users }) {
   console.log(users);
   return (
     <div>
-      <h1>jiji</h1>
-      {users.map((user) => {
+      {users.map((user) => (
         <div key={user.id}>
           <b>{user.id}</b>
           <span>{user.name}</span>
           <hr />
-        </div>;
-      })}
+        </div>
+      ))}
     </div>
   );
 }

@@ -1,12 +1,18 @@
+import Link from "next/link";
+
 function UsersList({ users }) {
   console.log(users);
   return (
     <div>
       {users.map((user) => (
         <div key={user.id}>
-          <b>{user.id}</b>
-          <span>{user.name}</span>
-          <hr />
+          <Link href={`/users/${user.id}`} passHref>
+            <div>
+              <b>{user.id}</b>
+              <span>{user.name}</span>
+              <hr />
+            </div>
+          </Link>
         </div>
       ))}
     </div>

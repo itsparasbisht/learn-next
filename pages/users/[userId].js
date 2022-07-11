@@ -12,13 +12,16 @@ function User({ user }) {
 export default User;
 
 export async function getServerSideProps(context) {
-  const { params } = context;
+  const { params, req, res, query } = context;
+  console.log(query);
+  console.log(req.headers.cookie);
+  res.setHeader("Set-Cookie", ["name=Harry"]);
   const { userId } = params;
 
-  const res = await fetch(
+  const response = await fetch(
     `https://jsonplaceholder.typicode.com/users/${userId}`
   );
-  const data = await res.json();
+  const data = await response.json();
 
   return {
     props: {

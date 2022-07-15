@@ -23,6 +23,16 @@ export default function Comments() {
     console.log(data);
   };
 
+  const deleteComment = async (id) => {
+    const res = await fetch(`/api/comments/${id}`, {
+      method: "DELETE",
+    });
+    const data = await res.json();
+    console.log(data);
+
+    getComments();
+  };
+
   return (
     <div>
       <input
@@ -39,6 +49,7 @@ export default function Comments() {
               <b>{item.id}.</b>
               {item.text}
             </span>
+            <button onClick={() => deleteComment(item.id)}>Delete</button>
           </p>
         ))}
     </div>
